@@ -1,3 +1,3 @@
 # Github
 
-Acessing Github api using Python
+Accessing Github api using Python
