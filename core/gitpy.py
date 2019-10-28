@@ -27,8 +27,7 @@ class GitPy:
     def get_initial_configuraion():
         '''Get Initial configuration from file'''
         if GitPy.git_config_path is None:
-            print('Please specify the token path in Script')
-            return None
+            return('Please specify the token path in Script')
         else:
             config_path = os.environ['gitpy_path'] + '\config.json'
             with open(config_path,'rb') as f:
