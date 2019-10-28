@@ -27,8 +27,16 @@ class TestGitPy(unittest.TestCase):
         git_config_path = r'C:\Users\baby\Google Drive\meta-data\github\blackhathack3r'
         os.environ['gitpy_path'] = git_config_path
         config_file = os.environ['gitpy_path'] + '\config.json'
-        with open(config_file,'r') as f:
-            cls.configuration_data = json.loads(f.read())
+        try:
+            with open(config_file,'r') as f:
+                cls.configuration_data = json.loads(f.read())
+        except FileNotFoundError:
+            config_data = {'username' : '', 'token' : ''}
+            username = os.environ['username']
+            token = os.environ['token']
+            config_data['username'] = username
+            config_data['token'] = token
+            cls.configuration_data = config_data
 
     @classmethod
     def tearDownClass(cls):
@@ -36,9 +44,6 @@ class TestGitPy(unittest.TestCase):
 
     def test_intial_configuration(self):
         self.logger.info('executing')
-        config_file = os.environ['gitpy_path'] + '\config.json'
-        with open(config_file,'r') as f:
-            self.configuration_data = json.loads(f.read())
         self.assertEqual(self.configuration_data,GitPy.get_initial_configuraion())
         self.logger.info('completed')
 

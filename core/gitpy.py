@@ -27,13 +27,19 @@ class GitPy:
     def get_initial_configuraion():
         '''Get Initial configuration from file'''
         if GitPy.git_config_path is None:
-            print('Please specify the token path in Script')
-            return None
+            return('Please specify the token path in Script')
         else:
             config_path = os.environ['gitpy_path'] + '\config.json'
-            with open(config_path,'rb') as f:
-                dict = json.load(f)
-                return dict
+            try:
+                with open(config_path,'r') as f:
+                    return json.loads(f.read())
+            except FileNotFoundError:
+                config_data = {'username' : '', 'token' : ''}
+                username = os.environ['username']
+                token = os.environ['token']
+                config_data['username'] = username
+                config_data['token'] = token
+                return config_data
 
     def check_connectivity(self):
         try:
