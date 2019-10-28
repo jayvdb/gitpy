@@ -24,19 +24,19 @@ class TestGitPy(unittest.TestCase):
         cls.logger.debug('Setting up Logger')
 
         ''' Setting up config file path env'''
-         git_config_path = r'C:\Users\baby\Google Drive\meta-data\github\blackhathack3r'
-         os.environ['gitpy_path'] = git_config_path
-         config_file = os.environ['gitpy_path'] + '\config.json'
-         try:
-             with open(config_file,'r') as f:
-                 cls.configuration_data = json.loads(f.read())
-         except FileNotFoundError as e:
-             config_data = {'username' : '', 'token' : ''}
-             username = os.environ['username']
-             token = os.environ['token']
-             config_data['username'] = username
-             config_data['token'] = token
-             cls.configuration_data = config_data
+        git_config_path = r'C:\Users\baby\Google Drive\meta-data\github\blackhathack3r'
+        os.environ['gitpy_path'] = git_config_path
+        config_file = os.environ['gitpy_path'] + '\config.json'
+        try:
+            with open(config_file,'r') as f:
+                cls.configuration_data = json.loads(f.read())
+        except FileNotFoundError as e:
+            config_data = {'username' : '', 'token' : ''}
+            username = os.environ['username']
+            token = os.environ['token']
+            config_data['username'] = username
+            config_data['token'] = token
+            cls.configuration_data = config_data
 
     @classmethod
     def tearDownClass(cls):
