@@ -7,10 +7,6 @@ python:
 
 os:
   - linux
-  - osx
-
-env:
-  - is_travis : True
 
 script:
   python3 -m unittest discover;
