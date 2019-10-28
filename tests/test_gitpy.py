@@ -30,7 +30,7 @@ class TestGitPy(unittest.TestCase):
         try:
             with open(config_file,'r') as f:
                 cls.configuration_data = json.loads(f.read())
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             config_data = {'username' : '', 'token' : ''}
             username = os.environ['username']
             token = os.environ['token']
