@@ -40,7 +40,7 @@ class TestGitPy(unittest.TestCase):
             token = os.environ['token']
             config_data['username'] = username
             config_data['token'] = token
-            cls.configuration_data
+            cls.configuration_data = config_data
 
     @classmethod
     def tearDownClass(cls):
