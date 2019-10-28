@@ -22,4 +22,6 @@ Python Interface to GitHub developer's API
 ---
 A command line package purely written in Python3 consumes GitHub developer's API and provides all the functionalities in one place.
 
-* Core : This package deals with authentication with GitHub api using Authentication token.
+* Core : Deals with authentication with GitHub API using Authentication token.
+
+* Repository : Deals with information & actions related to both public & private Repositories.
