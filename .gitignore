@@ -8,6 +8,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.log
+prev.py
 
 # C extensions
 *.so

@@ -42,28 +42,27 @@ class TestGitPy(unittest.TestCase):
         self.assertEqual(self.configuration_data,GitPy.get_initial_configuraion())
         self.logger.info('completed')
 
+    def setUp(self):
+        self.username = self.configuration_data['username']
+        self.token = self.configuration_data['token']
+        self.gitpy_object = GitPy(username=self.username,token=self.token)
+
     def test_authorization(self):
         self.logger.info('executing')
-        username = self.configuration_data['username']
-        token = self.configuration_data['token']
-        self.gitpy_object = GitPy(username=username,token=token)
         msg = self.gitpy_object.authorization()
         if(self.gitpy_object.is_connected == False):
             self.assertEqual(msg,'Please connect to Internet')
         else:
-            self.gitpy_object = GitPy(username=username,token=token+'nonce')
+            self.gitpy_object = GitPy(username=self.username,token=self.token+'nonce')
             self.assertEqual(self.gitpy_object.authorization(),'Access Denied : Wrong Token')
-            self.gitpy_object = GitPy(username=username+'nonce',token=token)
+            self.gitpy_object = GitPy(username=self.username+'nonce',token=self.token)
             self.assertEqual(self.gitpy_object.authorization(),'Access Denied : Wrong Username')
-            self.gitpy_object = GitPy(username=username,token=token)
-            self.assertEqual(self.gitpy_object.authorization(),'Authorization Successfull {}'.format(username))
+            self.gitpy_object = GitPy(username=self.username,token=self.token)
+            self.assertEqual(self.gitpy_object.authorization(),'Authorization Successfull {}'.format(self.username))
             self.logger.info('completed')
 
     def test_check_connectivity(self):
         self.logger.info('executing')
-        username = self.configuration_data['username']
-        token = self.configuration_data['token']
-        self.gitpy_object = GitPy(username=username,token=token)
         msg = self.gitpy_object.check_connectivity()
         if(self.gitpy_object.is_connected):
             self.assertEqual(msg,'Connected')
