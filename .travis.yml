@@ -4,11 +4,13 @@ sudo: false
 dist : xenial
 python:
   - "3.7"
-  
+
 os:
   - linux
   - osx
-  - windows
+
+env:
+  - is_travis : True
 
 script:
   python3 -m unittest discover;

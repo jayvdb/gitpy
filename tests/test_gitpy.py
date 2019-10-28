@@ -27,6 +27,7 @@ class TestGitPy(unittest.TestCase):
         is_travis = False
         try:
             is_travis = os.environ['is_travis']
+            print(is_travis)
         except KeyError as e:
             git_config_path = r'C:\Users\baby\Google Drive\meta-data\github\blackhathack3r'
             os.environ['gitpy_path'] = git_config_path
