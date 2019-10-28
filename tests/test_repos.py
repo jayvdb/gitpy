@@ -1,11 +1,13 @@
 import json
 import logging
-import unittest
 import os
+import requests
+import unittest
 
-from core.gitpy import GitPy
+from repository.repos import Repository
 
-class TestGitPy(unittest.TestCase):
+
+class TestRepository(unittest.TestCase):
 
     logger = None
     configuration_data = dict()
@@ -45,37 +47,20 @@ class TestGitPy(unittest.TestCase):
         cls.logger.debug('Shutting down logger\n')
 
     def setUp(self):
-        self.username = self.configuration_data['username']
-        self.token = self.configuration_data['token']
-        self.gitpy_object = GitPy(username=self.username,token=self.token)
-
-    def test_intial_configuration(self):
         self.logger.info('executing')
-        self.assertEqual(self.configuration_data,GitPy.get_initial_configuration())
+        self.repository_object = Repository()
         self.logger.info('completed')
 
-    def test_check_connectivity(self):
+    def test_list_all_repositories(self):
         self.logger.info('executing')
-        msg = self.gitpy_object.check_connectivity()
-        if(self.gitpy_object.is_connected):
-            self.assertEqual(msg,'Connected')
-        else:
-            self.assertEqual(msg,'Please connect to Internet')
+        msg = ''
+        required_link = self.repository_object.gitpy_object.developer_api + '/user/repos'
+        try:
+            session = requests.session()
+            response = session.get(required_link,headers=self.repository_object.gitpy_object.authorization_data)
+            msg = response.json()
+            session.close()
+        except requests.exceptions.RequestException as e:
+            msg = 'Please connect to Internet'
+        self.assertEqual(self.repository_object.list_all_public_repositories(),msg)
         self.logger.info('completed')
-
-    def test_authorization(self):
-        self.logger.info('executing')
-        msg = self.gitpy_object.authorization()
-        if(self.gitpy_object.is_connected == False):
-            self.assertEqual(msg,'Please connect to Internet')
-        else:
-            self.gitpy_object = GitPy(username=self.username,token=self.token+'nonce')
-            self.assertEqual(self.gitpy_object.authorization(),'Access Denied : Wrong Token')
-            self.gitpy_object = GitPy(username=self.username+'nonce',token=self.token)
-            self.assertEqual(self.gitpy_object.authorization(),'Access Denied : Wrong Username')
-            self.gitpy_object = GitPy(username=self.username,token=self.token)
-            self.assertEqual(self.gitpy_object.authorization(),'Authorization Successfull {}'.format(self.username))
-            self.logger.info('completed')
-
-if __name__ == '__main__':
-    unittest.main()
