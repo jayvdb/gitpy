@@ -1,11 +1,9 @@
 
 # gitpy
 
-Accessing Github api using Python : https://developer.github.com/
+Accessing Github API using Python3 & requests : https://developer.github.com/
 
-gitpy is a command line tool purely written in Python3 consumes GitHub developer's API and prvoides all the functionality in one place.
-
-It provides the following packages with it's feature.
+A command line package purely written in Python3 consumes GitHub developer's API and provides all the functionality in one place.
 
 * Core : This package deals with authentication with GitHub api using Authentication token.
 
