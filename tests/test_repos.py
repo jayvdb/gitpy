@@ -3,9 +3,7 @@ import logging
 import os
 import requests
 import unittest
-
 from repository.repos import Repository
-
 
 class TestRepository(unittest.TestCase):
 
@@ -49,6 +47,13 @@ class TestRepository(unittest.TestCase):
     def setUp(self):
         self.logger.info('executing')
         self.repository_object = Repository()
+        self.repo_meta_data = {
+          "description": "",
+          "homepage": "",
+          "has_issues": True,
+          "has_projects": True,
+          "has_wiki": True
+        }
         self.logger.info('completed')
 
     def test_list_all_repositories(self):
@@ -62,7 +67,6 @@ class TestRepository(unittest.TestCase):
             session.close()
         except requests.exceptions.RequestException as e:
             msg = 'Please connect to Internet'
-        self.logger.debug(msg)
         self.assertEqual(self.repository_object.list_all_user_repositories(),msg)
         self.logger.info('completed')
 
@@ -74,9 +78,58 @@ class TestRepository(unittest.TestCase):
             session = requests.session()
             response = requests.get(required_link)
             msg = response.json()
+            session.close()
         except  requests.exceptions.RequestException as e:
             msg = 'Network Error'
         msg = self.repository_object.list_all_public_repositories()
-        self.logger.debug(msg)
         self.assertEqual(self.repository_object.list_all_public_repositories(),msg)
+        self.logger.info('completed')
+
+    def create_repository(self,repo_name,access):
+        return_msg = ''
+        required_link = 'https://api.github.com/user/repos' # name of repository will be passed in post request.
+        repo_meta_data = {
+          "name": "{}".format(repo_name),
+          "description": "",
+          "homepage": "",
+          "has_issues": True,
+          "has_projects": True,
+          "has_wiki": True
+        }
+
+        if(access): # for private repo
+            repo_meta_data["private"] = "True"
+
+        repo_data_string = ','.join(['"%s":"%s"' % (key, value) for (key, value) in repo_meta_data.items()])
+        repo_data_string = '{' + repo_data_string +  '}' # data has to be submitted in the form of string-dictionary / only dictionary always
+        # print(repo_data_string,required_link)
+        try:
+            session = requests.session()
+            response = session.post(required_link,data = repo_data_string, headers = self.repository_object.gitpy_object.authorization_data)
+            return_msg = response.json()
+            session.close()
+        except requests.exceptions.RequestException as e:
+            return_msg = 'Bad Request {}'.format(self.username)
+        return [response.status_code,return_msg]
+
+    def test_create_public_repository(self):
+        self.logger.info('executing')
+        repo_name = 'repository-three-public'
+        self.repository_object.create_public_repository(repo_name)
+        required_link = self.repository_object.gitpy_object.developer_api+'/repos/{}/{}'.format(self.repository_object.username,repo_name)
+        response = requests.get(required_link)
+        self.assertEqual(response.status_code,200) # found create repository
+        response = requests.get(required_link+'s')
+        self.assertEqual(response.status_code,404) # not found repository
+        self.logger.info('completed')
+
+    def test_create_private_repository(self):
+        self.logger.info('executing')
+        repo_name = 'repository-four-private'
+        self.repository_object.create_private_repository(repo_name)
+        required_link = self.repository_object.gitpy_object.developer_api+'/repos/{}/{}'.format(self.repository_object.username,repo_name)
+        response = requests.get(required_link,headers=self.repository_object.gitpy_object.authorization_data)
+        self.assertEqual(response.status_code,200) # found create repository
+        response = requests.get(required_link+'s')
+        self.assertEqual(response.status_code,404) # not found repository
         self.logger.info('completed')
