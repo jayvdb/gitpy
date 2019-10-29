@@ -62,5 +62,21 @@ class TestRepository(unittest.TestCase):
             session.close()
         except requests.exceptions.RequestException as e:
             msg = 'Please connect to Internet'
+        self.logger.debug(msg)
+        self.assertEqual(self.repository_object.list_all_user_repositories(),msg)
+        self.logger.info('completed')
+
+    def test_list_all_public_repositories(self):
+        self.logger.info('executing')
+        msg = ''
+        required_link = self.repository_object.gitpy_object.developer_api + '/repositories'
+        try:
+            session = requests.session()
+            response = requests.get(required_link)
+            msg = response.json()
+        except  requests.exceptions.RequestException as e:
+            msg = 'Network Error'
+        msg = self.repository_object.list_all_public_repositories()
+        self.logger.debug(msg)
         self.assertEqual(self.repository_object.list_all_public_repositories(),msg)
         self.logger.info('completed')
