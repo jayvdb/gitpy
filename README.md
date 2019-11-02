@@ -9,12 +9,19 @@ Python Interface to GitHub developer's API
 
 ---
 
+## Dependencies
+
+[![Build Status](https://pypip.in/d/requests/badge.svg)](https://pypi.python.org/pypi/requests/)
+
+---
+
 ## Usage
 
 ```
 
 # git clone https://github.com/babygame0ver/gitpy.git
 # cd gitpy
+# pip install -r requiements.txt
 # python3 -m unittest discover
 
 ```
@@ -22,4 +29,6 @@ Python Interface to GitHub developer's API
 ---
 A command line package purely written in Python3 consumes GitHub developer's API and provides all the functionalities in one place.
 
-* Core : This package deals with authentication with GitHub api using Authentication token.
+* Core : Deals with authentication with GitHub API using Authentication token.
+
+* Repository : Deals with information & actions related to both public & private Repositories.
