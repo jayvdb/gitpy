@@ -19,9 +19,8 @@ Python Interface to GitHub developer's API
 
 ```
 
-# git clone https://github.com/babygame0ver/gitpy.git
-# cd gitpy
-# pip install -r requiements.txt
+# git clone https://github.com/babygame0ver/gitpy.git && cd gitpy
+# pip install -r requirements.txt
 # python3 -m unittest discover
 
 ```

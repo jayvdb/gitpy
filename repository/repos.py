@@ -86,7 +86,7 @@ class Repository():
             response = session.post(required_link,data = repo_data_string, headers = self.gitpy_object.authorization_data)
             session.close()
         except requests.exceptions.RequestException as e:
-            return_msg = 'Bad Request {}'.format(self.username)
+            return_msg = ['Bad Request {}'.format(self.username)]
         if self.gitpy_object.is_connected:
             if self.gitpy_object.authorized:
                 if response.status_code == 201:
@@ -106,6 +106,26 @@ class Repository():
 
     def create_private_repository(self,repo_name):
         return self.create_repository(repo_name,True)
+
+    def delete_a_repository(self,repo_name):
+        ''' Deletes a repository using it's name
+        https://developer.github.com/v3/repos/#delete-a-repository
+        https://api.github.com/repos/:owner/:repo
+        '''
+        required_link = self.gitpy_object.developer_api + '/repos/{}/{}'.format(self.gitpy_object.username,repo_name)
+        try:
+            session = requests.session()
+            response = session.delete(url = required_link , headers = self.gitpy_object.authorization_data)
+            session.close()
+        except requests.exceptions.RequestException as e:
+            return_msg = ['Bad Request {}'.format(self.username)]
+
+        if response.status_code == 204:
+            return_msg = ['{} Sucessfully Deleted'.format(repo_name),response.status_code]
+        elif response.status_code == 403:
+            return_msg = ['Organization members cannot delete repositories.',response.status_code]
+
+        return return_msg
 
 def main():
     user_repos = Repository()

@@ -143,3 +143,17 @@ class TestRepository(unittest.TestCase):
                 if not (self.repository_object.gitpy_object.authorized): # not(False) -> True
                     self.assertEqual(response[0],'Access Denied')
         self.logger.info('completed')
+
+    def test_delete_a_repository(self):
+        self.logger.info('executing')
+        repos_list = ['repository-four-private','repository-three-public']
+        response = self.repository_object.delete_a_repository(repos_list[0])
+        if (response[1] == 204):
+            self.assertEqual('{} Sucessfully Deleted'.format(repos_list[0]),response[0])
+        else:
+            self.assertEqual('Organization members cannot delete repositories.',response[0])
+        response = self.repository_object.delete_a_repository(repos_list[1])
+        if (response[1] == 204):
+            self.assertEqual('{} Sucessfully Deleted'.format(repos_list[1]),response[0])
+        else:
+            self.assertEqual('Organization members cannot delete repositories.',response[0])
