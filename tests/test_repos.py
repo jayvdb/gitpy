@@ -73,7 +73,7 @@ class TestRepository(unittest.TestCase):
     def test_list_all_public_repositories(self):
         self.logger.info('executing')
         msg = ''
-        required_link = self.repository_object.gitpy_object.developer_api + '/repositories'
+        required_link = self.repository_object.gitpy_object.developer_api + '/users/{}/repos'.format(self.repository_object.gitpy_object.username)
         try:
             session = requests.session()
             response = requests.get(required_link)
@@ -115,21 +115,31 @@ class TestRepository(unittest.TestCase):
     def test_create_public_repository(self):
         self.logger.info('executing')
         repo_name = 'repository-three-public'
-        self.repository_object.create_public_repository(repo_name)
-        required_link = self.repository_object.gitpy_object.developer_api+'/repos/{}/{}'.format(self.repository_object.username,repo_name)
-        response = requests.get(required_link)
-        self.assertEqual(response.status_code,200) # found create repository
-        response = requests.get(required_link+'s')
-        self.assertEqual(response.status_code,404) # not found repository
+        response = self.repository_object.create_public_repository(repo_name) #  created repository
+        if len(response) == 3: # created
+            self.assertEqual(response[2],'Repository Created Sucessfully')
+        elif len(response) == 2: # already existed
+            self.assertEqual(response[0],'The repository {} already exists on this account'.format(repo_name))
+        else: # errors handling
+            if not (self.repository_object.gitpy_object.is_connected):
+                self.assertEqual(response[0],'Please connect to Internet')
+            else:
+                if not (self.repository_object.gitpy_object.authorized): # not(False) -> True
+                    self.assertEqual(response[0],'Access Denied')
         self.logger.info('completed')
 
     def test_create_private_repository(self):
         self.logger.info('executing')
         repo_name = 'repository-four-private'
-        self.repository_object.create_private_repository(repo_name)
-        required_link = self.repository_object.gitpy_object.developer_api+'/repos/{}/{}'.format(self.repository_object.username,repo_name)
-        response = requests.get(required_link,headers=self.repository_object.gitpy_object.authorization_data)
-        self.assertEqual(response.status_code,200) # found create repository
-        response = requests.get(required_link+'s')
-        self.assertEqual(response.status_code,404) # not found repository
+        response = self.repository_object.create_private_repository(repo_name) #  created repository
+        if len(response) == 3: # created
+            self.assertEqual(response[2],'Repository Created Sucessfully')
+        elif len(response) == 2: # already existed
+            self.assertEqual(response[0],'The repository {} already exists on this account'.format(repo_name))
+        else: # errors handling
+            if not (self.repository_object.gitpy_object.is_connected):
+                self.assertEqual(response[0],'Please connect to Internet')
+            else:
+                if not (self.repository_object.gitpy_object.authorized): # not(False) -> True
+                    self.assertEqual(response[0],'Access Denied')
         self.logger.info('completed')

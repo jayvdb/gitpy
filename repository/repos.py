@@ -90,15 +90,15 @@ class Repository():
         if self.gitpy_object.is_connected:
             if self.gitpy_object.authorized:
                 if response.status_code == 201:
-                    return_msg = response.json()
+                    return_msg = [response.json() , response.status_code , 'Repository Created Sucessfully'] #3
                 elif response.status_code == 422:
-                    return_msg = 'The repository {} already exists on this account'.format(repo_name)
+                    return_msg = ['The repository {} already exists on this account'.format(repo_name),response.status_code] # 2
                 else:
-                    return_msg = 'Please Try Again'
+                    return_msg = ['Please Try Again'] # 1
             else:
-                return_msg = 'Access Denied'
+                return_msg = ['Access Denied'] #1
         else:
-            return_msg = 'Please connect to Internet'
+            return_msg = ['Please connect to Internet'] #1
         return return_msg
 
     def create_public_repository(self,repo_name):
