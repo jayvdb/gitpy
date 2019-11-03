@@ -9,4 +9,4 @@ os:
   - linux
 
 script:
-  python3 -m unittest discover;
+  coverage run -m unittest discover;
