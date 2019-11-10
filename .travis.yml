@@ -9,7 +9,7 @@ os:
   - linux
 
 script:
-  coverage run -m unittest discover;
+  entry.sh
 
 after_success:
   python setup.py install
