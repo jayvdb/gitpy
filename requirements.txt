@@ -1,2 +1,2 @@
-requests
-coverage
+requests==2.22.0
+coverage==4.5.4

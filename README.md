@@ -11,7 +11,12 @@ Python Interface to GitHub developer's API
 
 ## Dependencies
 
-[![Build Status](https://pypip.in/d/requests/badge.svg)](https://pypi.python.org/pypi/requests/)
+[![Python](https://img.shields.io/badge/python-3.7.4-blue.svg)](https://www.python.org/downloads/release/python-374/)
+
+[![Requests](https://img.shields.io/badge/requests-2.22.0-blue.svg?style=flat-square)](https://pypi.python.org/pypi/requests/)
+
+[![Coverage](https://img.shields.io/badge/Coverage-4.5.4-blue.svg?style=flat-square)](https://pypi.org/project/coverage/)
+
 
 ---
 
