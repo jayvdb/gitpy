@@ -5,9 +5,10 @@ import os
 import tracemalloc
 
 from .initial_setup import logger_setup , initial_config_setup
-from core.gitpy import GitPy
+#from core.gitpy import GitPy
+from gitpy.core.auth import GitPy
 
-class TestGitPy(unittest.TestCase):
+class TestAuth(unittest.TestCase):
 
     logger = None
     configuration_data = dict()

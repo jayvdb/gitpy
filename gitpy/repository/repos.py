@@ -1,5 +1,5 @@
 import requests
-from core.gitpy import GitPy
+from gitpy.core.auth import GitPy
 
 class Repository():
 
@@ -80,6 +80,7 @@ class Repository():
 
         repo_data_string = ','.join(['"%s":"%s"' % (key, value) for (key, value) in repo_meta_data.items()])
         repo_data_string = '{' + repo_data_string +  '}' # data has to be submitted in the form of string-dictionary / only dictionary always
+        return_msg = ''
         # print(repo_data_string,required_link)
         try:
             session = requests.session()
@@ -112,6 +113,8 @@ class Repository():
         https://developer.github.com/v3/repos/#delete-a-repository
         https://api.github.com/repos/:owner/:repo
         '''
+        response = None
+        return_msg = ''
         required_link = self.gitpy_object.developer_api + '/repos/{}/{}'.format(self.gitpy_object.username,repo_name)
         try:
             session = requests.session()
@@ -119,12 +122,10 @@ class Repository():
             session.close()
         except requests.exceptions.RequestException as e:
             return_msg = ['Bad Request {}'.format(self.username)]
-
         if response.status_code == 204:
             return_msg = ['{} Sucessfully Deleted'.format(repo_name),response.status_code]
         elif response.status_code == 403:
             return_msg = ['Organization members cannot delete repositories.',response.status_code]
-
         return return_msg
 
 def main():

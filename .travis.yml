@@ -10,3 +10,9 @@ os:
 
 script:
   coverage run -m unittest discover;
+
+after_success:
+  python setup.py install
+
+after_script:
+  python tests\after_install\post_install_script.py
