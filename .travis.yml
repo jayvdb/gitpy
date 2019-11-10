@@ -8,6 +8,9 @@ python:
 os:
   - linux
 
+before_install:
+  - chmod +x entry.sh
+
 script:
   ./entry.sh
 
