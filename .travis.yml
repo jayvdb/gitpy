@@ -9,7 +9,7 @@ os:
   - linux
 
 script:
-  entry.sh
+  ./entry.sh
 
 after_success:
   python setup.py install
