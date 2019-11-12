@@ -16,7 +16,7 @@ script:
 
 after_success:
   - codecov
+  - python setup.py install
   
-after_script:
-  python setup.py install
+after_script:  
   python tests/after_install/post_install_script.py
