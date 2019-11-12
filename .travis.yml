@@ -15,7 +15,7 @@ script:
   ./entry.sh
 
 after_success:
-  codecov
+  - codecov
   python setup.py install
 
 after_script:
