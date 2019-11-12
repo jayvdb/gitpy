@@ -6,6 +6,8 @@ Python Interface to GitHub developer's API
 ---
 
 [![Build Status](https://travis-ci.org/babygame0ver/gitpy.svg?branch=master)](https://travis-ci.org/babygame0ver/gitpy)
+[![Code Climate](https://codeclimate.com/github/babygame0ver/gitpy.png)](https://codeclimate.com/github/babygame0ver/gitpy)
+
 
 ---
 
