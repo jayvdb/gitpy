@@ -8,5 +8,15 @@ python:
 os:
   - linux
 
+before_install:
+  - chmod +x entry.sh
+
 script:
-  coverage run -m unittest discover;
+  ./entry.sh
+
+after_success:
+  codecov
+  python setup.py install
+
+after_script:
+  python tests/after_install/post_install_script.py

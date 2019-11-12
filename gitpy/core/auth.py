@@ -47,7 +47,7 @@ class GitPy:
         ''' https://developer.github.com/v3/#authentication '''
         self.check_connectivity()
         if self.is_connected:
-            return_msg = ''
+            return_msg = None
             authorization_data = {'Authorization':'token {}'.format(self.token)}
             api_url = "https://api.github.com/users/:username" # required_link format in case of authorization
             api_url = self.developer_api + '/users/' + self.username # overiding required_link

@@ -3,7 +3,8 @@ import logging
 import os
 import requests
 import unittest
-from repository.repos import Repository
+#from repository.repos import Repository
+from gitpy.repository.repos import Repository
 from .initial_setup import initial_config_setup
 
 class TestRepository(unittest.TestCase):
@@ -24,7 +25,7 @@ class TestRepository(unittest.TestCase):
         log_format = logging.Formatter('%(asctime)s - %(levelname)s - %(funcName)s: - %(message)s')
         file_handle.setFormatter(log_format)
         cls.logger.addHandler(file_handle)
-        cls.logger.debug('Setting up Logger')                
+        cls.logger.debug('Setting up Logger')
         cls.configuration_data = initial_config_setup()
 
     @classmethod
@@ -73,6 +74,7 @@ class TestRepository(unittest.TestCase):
         self.logger.info('completed')
 
     def create_repository(self,repo_name,access):
+        self.logger.info('executing')
         return_msg = ''
         required_link = 'https://api.github.com/user/repos' # name of repository will be passed in post request.
         repo_meta_data = {
@@ -97,6 +99,7 @@ class TestRepository(unittest.TestCase):
             session.close()
         except requests.exceptions.RequestException as e:
             return_msg = 'Bad Request {}'.format(self.username)
+        self.logger.info('completed')
         return [response.status_code,return_msg]
 
     def test_create_public_repository(self):
@@ -144,3 +147,4 @@ class TestRepository(unittest.TestCase):
             self.assertEqual('{} Sucessfully Deleted'.format(repos_list[1]),response[0])
         else:
             self.assertEqual('Organization members cannot delete repositories.',response[0])
+        self.logger.info('completed')
