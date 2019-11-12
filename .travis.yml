@@ -15,6 +15,7 @@ script:
   ./entry.sh
 
 after_success:
+  - coverage run --source=tests
   - codecov
   - python setup.py install
   
