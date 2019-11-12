@@ -1,1 +1,1 @@
-coverage run --source=tests
+python -m unittest discover
