@@ -1,2 +1,2 @@
 python -m unittest discover
-coverage run --include=tests
+coverage run --source=tests
