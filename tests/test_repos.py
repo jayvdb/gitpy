@@ -5,7 +5,7 @@ import requests
 import unittest
 #from repository.repos import Repository
 from gitpy.repository.repos import Repository
-from .initial_setup import initial_config_setup
+from .initial_setup import initial_config_setup 
 
 class TestRepository(unittest.TestCase):
 
