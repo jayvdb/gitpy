@@ -53,8 +53,7 @@ class Repository():
                 return_msg = 'Access Denied'
         return return_msg
 
-
-    def create_repository(self,repo_name,access):
+    def create_post_data(self,repo_name,access):
         ''' https://developer.github.com/v3/repos/#create
          Actual command from curl is :
         curl -H "Authorization: token xxx" https://api.github.com/user/repos -d
@@ -80,11 +79,16 @@ class Repository():
 
         repo_data_string = ','.join(['"%s":"%s"' % (key, value) for (key, value) in repo_meta_data.items()])
         repo_data_string = '{' + repo_data_string +  '}' # data has to be submitted in the form of string-dictionary / only dictionary always
+        return repo_data_string
+
+    def create_repository(self,repo_name,access):
+        ''' Creating repository'''
+        payload = self.create_post_data(repo_name,access)
+        required_link = 'https://api.github.com/user/repos'
         return_msg = ''
-        # print(repo_data_string,required_link)
         try:
             session = requests.session()
-            response = session.post(required_link,data = repo_data_string, headers = self.gitpy_object.authorization_data)
+            response = session.post(required_link,data = payload, headers = self.gitpy_object.authorization_data)
             session.close()
         except requests.exceptions.RequestException as e:
             return_msg = ['Bad Request {}'.format(self.username)]
@@ -129,7 +133,7 @@ class Repository():
         return return_msg
 
 def main():
-    user_repos = Repository()
+    pass
 
 if __name__ == '__main__':
     main()

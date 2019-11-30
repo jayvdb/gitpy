@@ -69,11 +69,7 @@ class GitPy:
             return('Please connect to Internet')
 
 def main():
-    configuration = GitPy.get_initial_configuration()
-    username = configuration['username']
-    token = configuration['token']
-    g = GitPy(username = username,token = token)
-    print(g.authorization())
+    pass
 
 
 if __name__ == '__main__':
