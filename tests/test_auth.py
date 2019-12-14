@@ -1,11 +1,5 @@
-import json
-import logging
-import unittest
-import os
-import tracemalloc
-
-from .initial_setup import logger_setup , initial_config_setup
-#from core.gitpy import GitPy
+import json ,logging , os , requests, unittest
+from .initial_setup import initial_config_setup
 from gitpy.core.auth import GitPy
 
 class TestAuth(unittest.TestCase):

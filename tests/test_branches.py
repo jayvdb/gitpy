@@ -1,9 +1,4 @@
-import json
-import logging
-import os
-import requests
-import unittest
-
+import json ,logging , os , requests, unittest
 from gitpy.repository.branch.branches import branches
 from .initial_setup import initial_config_setup
 
