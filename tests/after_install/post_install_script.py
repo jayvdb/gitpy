@@ -11,5 +11,8 @@ def authentication_module():
     print(g.check_connectivity()) # Connected
     print(g.authorization()) # Authorization Successfull {username}
 
+def main():
+    authentication_module()
+
 if __name__ == '__main__':
     main()
