@@ -54,30 +54,29 @@ A command line package purely written in Python3 consumes GitHub developer's API
 
 For config.json file you need to edit git_config_path in auth.py file as follow.
 
-File Location : gitpy/core/auth.py
+File Location for editing git_config_path: gitpy/core/auth.py
 
 ![alt text](tests/after_install/config_json.PNG)
 
 After Installation
 
-```
-from gitpy.core.auth import GitPy
+.. code-block:: python
 
-def authentication_module():
-    config_data = GitPy.get_initial_configuration()
-    print(config_data)
-    g = GitPy(username = config_data['username'], token = config_data['token'])
-    '''
-    or
-    g = GitPy(username = 'username',token = 'token')
-    '''
-    print(g.check_connectivity()) # Connected
-    print(g.authorization()) # Authorization Successfull {username}
+    from gitpy.core.auth import GitPy
 
-def main():
-    authentication_module()
+    def authentication_module():
+        config_data = GitPy.get_initial_configuration()
+        print(config_data)
+        g = GitPy(username = config_data['username'], token = config_data['token'])
+        '''
+        or
+        g = GitPy(username = 'username',token = 'token')
+        '''
+        print(g.check_connectivity()) # Connected
+        print(g.authorization()) # Authorization Successfull {username}
 
-if __name__ == '__main__':
-    main()
+    def main():
+        authentication_module()
 
-```
+    if __name__ == '__main__':
+        main()
