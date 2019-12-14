@@ -52,9 +52,13 @@ A command line package purely written in Python3 consumes GitHub developer's API
 
 ### Initial Configuration for GitPy : Create a config.json file with Username and Token in Your System or Create env variable with Username and Token having values as username and token.
 
-For config.json file you need to edit git_config_path in auth.py file as follow. 
+For config.json file you need to edit git_config_path in auth.py file as follow.
 
-After Installation 
+File Location : gitpy/core/auth.py
+
+![alt text](tests/after_install/config_json.PNG)
+
+After Installation
 
 ```
 from gitpy.core.auth import GitPy
@@ -77,5 +81,3 @@ if __name__ == '__main__':
     main()
 
 ```
-
- 
