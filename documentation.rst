@@ -9,7 +9,7 @@ File Location for editing git_config_path: gitpy/core/auth.py
 
 .. image :: tests/after_install/config_json.PNG
 
-After Installation
+1. Using Gitpy to Authenticate the username and token 
 
 .. code-block:: python
 

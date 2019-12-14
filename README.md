@@ -50,4 +50,4 @@ A command line package purely written in Python3 consumes GitHub developer's API
 
 ## Documentation
 
-[Docs](documentation.rst)
+[gitpy Docs](documentation.rst)
