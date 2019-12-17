@@ -27,7 +27,7 @@ Gitpy works on Username & Token of a GitHub Account. So it require few configura
 
    OR
 
-- Creating Environment variable 'Username' & 'Token' in your machine.
+- Creating Environment variable 'username' & 'token' in your machine.
 
 
 ---
