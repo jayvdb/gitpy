@@ -20,6 +20,18 @@ Python Interface to GitHub developer's API
 
 ---
 
+## Pre-Installation Guide
+
+Gitpy works on Username & Token of a GitHub Account. So it require few configuration before Installation. For configuration we have two methods available.
+- Adding a config.json file to file system & adding the path of config.json file in gitpy 
+
+   OR
+
+- Creating Environment variable 'Username' & 'Token' in your machine.
+
+
+---
+
 ## Installation Guide
 
 ```
