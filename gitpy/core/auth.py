@@ -5,7 +5,7 @@ import requests
 class GitPy:
 
     developer_api = "https://api.github.com"
-    git_config_path = r'C:\Users\baby\Google Drive\meta-data\github\blackhathack3r'
+    git_config_path = r'C:\Users\baby\Desktop\github\github'
     os.environ['gitpy_path'] = git_config_path
 
     def __init__(self,username=None,password=None,token=None):

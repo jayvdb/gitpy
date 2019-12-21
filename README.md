@@ -22,41 +22,28 @@ Python Interface to GitHub developer's API
 
 ## Pre-Installation Guide
 
-Gitpy works on Username & Token of a GitHub Account. So it require few configuration before Installation. For configuration we have two methods available.
-- Creating a config.json file with 'username','token' & adding the path of config.json file in gitpy/core/auth.py 
-
-   OR
-
-- Creating Environment variable 'username' & 'token' in your machine.
-
+[Configuration & Setup Docs](config.md)
 
 ---
 
 ## Installation Guide
 
+After following the Configuration & Setup Guide use these commands to install Gitpy.
+
 ```
 
-# git clone https://github.com/babygame0ver/gitpy.git && cd gitpy
-# pip install -r requirements.txt
-# python3 setup.py install
+pip install -r requirements.txt
+python3 setup.py install
 
 ```
 
 ## Run test suite
 
 ```
-# python3 -m unittest discover
-# coverage run -m unittest discover
+python3 -m unittest discover
+coverage run -m unittest discover
 
 ```
-
----
-
-A command line package purely written in Python3 consumes GitHub developer's API and provides all the functionalities in one place using Python Function.
-
-* Core : Deals with authentication with GitHub API using Authentication token.
-
-* Repository : Deals with information & actions related to both public & private Repositories.
 
 ---
 

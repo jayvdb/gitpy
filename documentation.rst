@@ -1,13 +1,16 @@
 
 =========================================================
-Initial Configuration for GitPy : Create a config.json file with Username and Token in Your System or Create env variable with Username and Token having values as username and token.
+GitPy : Python Interface to GitHub's developer API
 =========================================================
 
-For config.json file you need to edit git_config_path in auth.py file as follow.
+Overview :
 
-File Location for editing git_config_path: gitpy/core/auth.py
+A command line package purely written in Python3 consumes GitHub developer's API and provides all the functionalities in one place using Python Function.
 
-.. image :: tests/after_install/media/config_json.PNG
+* Core : Deals with authentication with GitHub API using Authentication token.
+
+* Repository : Deals with information & actions related to both public & private Repositories.
+
 
 1. Using Gitpy to Authenticate the username and token
 
