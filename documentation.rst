@@ -12,7 +12,7 @@ A command line package purely written in Python3 consumes GitHub developer's API
 * Repository : Deals with information & actions related to both public & private Repositories.
 
 
-1. Using Gitpy to Authenticate the username and token
+1. Using Gitpy to Authenticate the username and token (:download:tests/after_install/authFunc.py)
 
 .. code-block:: python
 
@@ -33,6 +33,30 @@ A command line package purely written in Python3 consumes GitHub developer's API
     def main():
         authentication_module_using_configFile()
         authentication_module_using_Credentials()
+
+    if __name__ == '__main__':
+        main()
+
+2. Using Repository module to create and delete Public/Repository (:download:tests/after_install/reposFunc.py)
+
+.. code-block:: python
+
+    from gitpy.repository.repos import Repository
+
+
+    def RepositoryModule():
+
+        r = Repository()
+        print(r.list_all_user_repositories()) # JSON response
+        print(r.create_public_repository('My-Public-Repository'))
+        print(r.create_private_repository('My-Private-Repository'))
+        print(r.delete_a_repository('My-Public-Repository'))
+        print(r.delete_a_repository('My-Private-Repository'))
+
+
+    def main():
+        RepositoryModule()
+
 
     if __name__ == '__main__':
         main()

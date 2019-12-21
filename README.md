@@ -1,4 +1,3 @@
-
 # gitpy
 
 Python Interface to GitHub developer's API
@@ -37,6 +36,8 @@ After following the Configuration & Setup Guide use these commands to install Gi
 
 ```
 
+---
+
 ## Run test suite
 
 ```
@@ -49,4 +50,4 @@ After following the Configuration & Setup Guide use these commands to install Gi
 
 ## Documentation
 
-[gitpy Docs](documentation.rst)
+[Docs](documentation.rst)
