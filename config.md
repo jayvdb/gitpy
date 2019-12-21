@@ -1,29 +1,29 @@
-# Configuration Steps for Gitpy (Before Installation : 2 minutes)
+## Configuration Steps for Gitpy (Before Installation : 2 minutes)
 
 Gitpy works on Username & Token of a GitHub Account. So it requires few configuration before Installation.
 
 For configuration we have two methods available.
 
-## Clone gitpy
+## Download gitpy
 
 ```
 # git clone https://github.com/babygame0ver/gitpy.git && cd gitpy
 
 ```
 
-1. Using Configuration from Local File.
+### Method 1. Using Configuration from Local File.
 
-- Create a File with username and token & name it config.json
+      - Create a File with username and token & name it config.json
 
-![alt text](tests/after_install/media/file_config/1-config_file.PNG)
+      ![alt text](tests/after_install/media/file_config/1-config_file.PNG)
 
-- Copy the absolute path of file from file system
+      - Copy the absolute path of file from file system
 
-![alt text](tests/after_install/media/file_config/2-config_file_path.PNG)
+      ![alt text](tests/after_install/media/file_config/2-config_file_path.png)
 
-- Change the git_config_path variable in gitpy/core/auth.py
+      - Change the git_config_path variable in gitpy/core/auth.py
 
-![alt text](tests/after_install/media/file_config/3-config_file_path_in_gitpy.PNG)
+      ![alt text](tests/after_install/media/file_config/3-config_file_path_in_gitpy.PNG)
 
 ---
 

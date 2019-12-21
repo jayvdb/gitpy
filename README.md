@@ -32,16 +32,16 @@ After following the Configuration & Setup Guide use these commands to install Gi
 
 ```
 
-pip install -r requirements.txt
-python3 setup.py install
+# pip install -r requirements.txt
+# python3 setup.py install
 
 ```
 
 ## Run test suite
 
 ```
-python3 -m unittest discover
-coverage run -m unittest discover
+# python3 -m unittest discover
+# coverage run -m unittest discover
 
 ```
 
