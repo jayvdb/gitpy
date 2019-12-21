@@ -21,14 +21,24 @@ For configuration we have two methods available.
 
 ![alt text](tests/after_install/media/file_config/2-config_file_path.png)
 
-- Change the git_config_path variable in gitpy/core/auth.py
+- Change the git_config_path variable in **gitpy/core/auth.py**
 
 ![alt text](tests/after_install/media/file_config/3-config_file_path_in_gitpy.PNG)
 
 ---
 
-2. Creating Environment variable 'username' & 'token' in your machine.
+### Method 2. Creating Environment variable 'username' & 'token' in your machine.
 
 - Obtain Access token from your GitHub Account.
 
-- Add Username & Token to Environment variables in your Machine.
+[Personal Access Token Guide](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+
+- After obtaining Access token add your Username & Token to Environment variables in your Machine.
+
+1. Username
+
+![alt text](tests/after_install/media/env/1-adding-username.PNG)
+
+2. Token
+
+![alt text](tests/after_install/media/env/2-adding-token.PNG)
