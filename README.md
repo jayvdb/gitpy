@@ -40,7 +40,7 @@ After following the Configuration & Setup Guide use these commands to install Gi
 ## Run test suite
 
 ```
-# python3 -m unittest discover
+# python -m unittest discover
 # coverage run -m unittest discover
 
 ```
