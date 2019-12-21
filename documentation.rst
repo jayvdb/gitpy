@@ -14,7 +14,7 @@ A command line package purely written in Python3 consumes GitHub developer's API
 
 1. Using Gitpy to Authenticate the username and token
 
-:download:tests/after_install/authFunc.py
+:download:`tests/after_install/authFunc.py`
 
 .. code-block:: python
 
@@ -41,7 +41,7 @@ A command line package purely written in Python3 consumes GitHub developer's API
 
 2. Using Repository module to create and delete Public/Repository
 
-:download:tests/after_install/reposFunc.py
+:download:`tests/after_install/reposFunc.py`
 
 .. code-block:: python
 
