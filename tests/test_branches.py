@@ -49,3 +49,4 @@ class TestBranches(unittest.TestCase):
             msg = 'Please connect to Internet'
         self.assertEqual(self.branch_object.get_all_branches_of_a_repo(test_repo_name),msg)
         self.logger.info('completed')
+        self.repo_object.delete_a_repository(test_repo_name)
