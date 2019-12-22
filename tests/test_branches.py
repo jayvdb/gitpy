@@ -1,5 +1,6 @@
 import json ,logging , os , requests, unittest
 from gitpy.repository.branch.branches import branches
+from gitpy.repository.repos import Repository
 from .initial_setup import initial_config_setup
 
 class TestBranches(unittest.TestCase):
@@ -30,13 +31,15 @@ class TestBranches(unittest.TestCase):
     def setUp(self):
         self.logger.info('executing')
         self.branch_object = branches()
+        self.repo_object = Repository()
         self.logger.info('completed')
 
     def test_get_all_branches_of_a_repo(self):
         self.logger.info('executing')
         msg = ''
-        repo_name = 'repository-two'
-        required_link = self.branch_object.gitpy_object.developer_api + '/repos/{}/{}/branches'.format(self.branch_object.username,repo_name)
+        test_repo_name = 'repository-two'
+        self.repo_object.create_public_repository(test_repo_name)
+        required_link = self.branch_object.gitpy_object.developer_api + '/repos/{}/{}/branches'.format(self.branch_object.username,test_repo_name)
         try:
             session = requests.session()
             response = session.get(required_link,headers=self.branch_object.gitpy_object.authorization_data)
@@ -44,5 +47,5 @@ class TestBranches(unittest.TestCase):
             session.close()
         except requests.exceptions.RequestException as e:
             msg = 'Please connect to Internet'
-        self.assertEqual(self.branch_object.get_all_branches_of_a_repo(repo_name),msg)
+        self.assertEqual(self.branch_object.get_all_branches_of_a_repo(test_repo_name),msg)
         self.logger.info('completed')
