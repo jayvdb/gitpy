@@ -51,3 +51,9 @@ After following the Configuration & Setup Guide use these commands to install Gi
 ## Documentation
 
 [Docs](documentation.rst)
+
+---
+
+### Contact Information
+
+akshatkathpal29@gmail.com
