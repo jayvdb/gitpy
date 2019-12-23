@@ -37,7 +37,7 @@ A command line package purely written in Python3 consumes GitHub developer's API
     if __name__ == '__main__':
         main()
 
-2. Using Repository module to create and delete Public/Repository
+2. Using Repository module to create and delete Public/Private Repositories in account
 
 .. code-block:: python
 
@@ -48,10 +48,10 @@ A command line package purely written in Python3 consumes GitHub developer's API
 
         r = Repository()
         print(r.list_all_user_repositories()) # JSON response
-        print(r.create_public_repository('My-Public-Repository'))
-        print(r.create_private_repository('My-Private-Repository'))
-        print(r.delete_a_repository('My-Public-Repository'))
-        print(r.delete_a_repository('My-Private-Repository'))
+        print(r.create_public_repository('My-Public-Repository')) # public repository created
+        print(r.create_private_repository('My-Private-Repository')) # private repository created
+        print(r.delete_a_repository('My-Public-Repository')) # deleting repository 
+        print(r.delete_a_repository('My-Private-Repository')) # deleting repository 
 
 
     def main():
