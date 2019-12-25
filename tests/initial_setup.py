@@ -1,7 +1,6 @@
 import logging
 import json
 import os
-import tracemalloc
 
 def initial_config_setup():
     ''' Setting up config file path env'''
