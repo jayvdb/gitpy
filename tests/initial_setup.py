@@ -10,7 +10,7 @@ def initial_config_setup():
     try:
         with open(config_file,'r') as f:
             configuration_data = json.loads(f.read())
-    except FileNotFoundError: # if not found go to travis environment variables
+    except: # if not found go to travis environment variables
         config_data = {'username' : '', 'token' : ''}
         username = os.environ['username']
         token = os.environ['token']
