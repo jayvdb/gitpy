@@ -26,7 +26,7 @@ class GitPy:
             try:
                 with open(config_path,'r') as f:
                     return json.loads(f.read())
-            except FileNotFoundError:
+            except:
                 config_data = {'username' : '', 'token' : ''}
                 username = os.environ['username']
                 token = os.environ['token']
