@@ -8,6 +8,7 @@ Python Interface to GitHub developer's API
 [![Code Climate](https://codeclimate.com/github/babygame0ver/gitpy.png?style=flat-square)](https://codeclimate.com/github/babygame0ver/gitpy)
 [![codecov](https://codecov.io/gh/babygame0ver/gitpy/branch/master/graph/badge.svg)](https://codecov.io/gh/babygame0ver/gitpy)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/64422e753f1d40c9a7cc039b21f4363a)](https://www.codacy.com/manual/babygame0ver/gitpy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=babygame0ver/gitpy&amp;utm_campaign=Badge_Grade)
+[![](https://img.shields.io/badge/license-MIT%20License-red.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
