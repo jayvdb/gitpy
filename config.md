@@ -35,6 +35,8 @@ For configuration we have two methods available.
 
 - After obtaining Access token add your Username & Token to Environment variables in your Machine.
 
+### For Windows
+
 1. Username
 
 ![alt text](tests/after_install/media/env/1-adding-username.PNG)
@@ -42,3 +44,10 @@ For configuration we have two methods available.
 2. Token
 
 ![alt text](tests/after_install/media/env/2-adding-token.PNG)
+
+### For Linux/MAC
+
+```
+export username="yourgithubusername"
+export token="yoursecretaccesstoken"
+```
