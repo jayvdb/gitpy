@@ -14,7 +14,7 @@ class TestBranches(unittest.TestCase):
         ''' Setting up logger before testing whole script '''
         file_name = os.path.basename(__file__).split('.')[0]
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        log_file_path = os.path.join(dir_path,'logs\\') + file_name + '.log'
+        log_file_path = os.path.join(dir_path, 'logs', file_name + '.log')
         cls.logger = logging.Logger(file_name)
         cls.logger.setLevel(logging.DEBUG)
         file_handle = logging.FileHandler(log_file_path)
